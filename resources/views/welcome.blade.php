@@ -1,6 +1,7 @@
 <x-layout>
 
   @auth
+      <p>Welcome {{ auth()->user()->name }}</p>
       <form action="{{ route('logout') }}" method="POST">
         @csrf
         <button type="submit">Logout</button>

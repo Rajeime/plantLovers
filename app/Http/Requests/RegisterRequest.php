@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Validation\Rules\Unique;
 use Illuminate\Foundation\Http\FormRequest;
 
 class RegisterRequest extends FormRequest
@@ -25,11 +27,11 @@ class RegisterRequest extends FormRequest
         Log::debug("message",Request()->all());
         return [
             //
-            'name' => 'required|string',
+            'name' => ['required', 'string'],
             // 'role_id' => 'required',
-            'email' => 'required|email',
-            'phone' => 'required|string',
-            'password' => 'required|confirmed',
+            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users', 'email')],
+            'phone' => ['required','string'],
+            'password' => ['required', 'confirmed'],
         ];
     }
 }
