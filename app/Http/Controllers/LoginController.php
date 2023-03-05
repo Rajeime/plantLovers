@@ -22,7 +22,7 @@ class LoginController extends Controller
         }
 
         return redirect()->back()->withInput($request->only('email', 'remember'))->withErrors([
-            'email' => 'These credentials do not match our records.',
+            'error' => 'These credentials do not match our records.',
         ]);
     }
 

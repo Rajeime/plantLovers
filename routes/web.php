@@ -19,7 +19,7 @@ use App\Http\Controllers\RegisterController;
 Route::prefix('plant')->group(function(){
     Route::get('/', [PlantController::class , 'index'])->name('plant.index');
     Route::get('/show/{plant}', [PlantController::class , 'show'])->name('plant.show');
-    
+       
     // Add auth middleware added to routes
     Route::middleware(['auth'])->group(function () {
         Route::get('/create', [PlantController::class , 'create'])->name('plant.create');

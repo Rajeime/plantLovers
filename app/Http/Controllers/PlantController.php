@@ -15,7 +15,7 @@ class PlantController extends Controller
     public function index()
     {
         //
-        $plants = Plant::all();
+        $plants = Plant::latest()->filter(request(['search']))->get();
         return view('welcome', compact('plants'));
         // return $plants;
     }
@@ -98,4 +98,5 @@ class PlantController extends Controller
         return redirect()->route('plant.index')->with('success','Deleted Successfully');
 
     }
+
 }

@@ -19,12 +19,12 @@
         {{ $message }}
         @enderror
 
-        <input type="text" name="password" id="" placeholder="password" value="{{ old('password') }}">
+        <input type="password" name="password" id="" placeholder="password" value="{{ old('password') }}">
         @error('password')
         {{ $message }}
         @enderror
 
-        <input type="text" name="password_confirmation" id="" placeholder="confirm password" value="{{ old('password_confirmation') }}">
+        <input type="password" name="password_confirmation" id="" placeholder="confirm password" value="{{ old('password_confirmation') }}">
         @error('password_confirmation')
         {{ $message }}
         @enderror

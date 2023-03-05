@@ -6,6 +6,7 @@
     <h4>{{ $plant['species'] }}</h4>
 
     <form action="{{ route('plant.destroy', $plant['id']) }}" method="post">
+        @csrf
         @method('delete')
         <button type="subimt">Delete</button>
     </form>
