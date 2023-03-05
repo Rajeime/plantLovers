@@ -5,10 +5,6 @@
     <h3>{{ $plant['genus'] }}</h3>
     <h4>{{ $plant['species'] }}</h4>
 
-    <form action="{{ route('plant.destroy', $plant['id']) }}" method="post">
-        @csrf
-        @method('delete')
-        <button type="subimt">Delete</button>
-    </form>
-    <a href="{{ route('plant.edit', $plant['id']) }}">Edit</a>
+    <h4>owner {{ $owner }}</h4>
+
 </x-layout>

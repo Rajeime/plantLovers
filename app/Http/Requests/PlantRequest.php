@@ -32,14 +32,12 @@ class PlantRequest extends FormRequest
                 "common_name" => "required|string|max:50",
                 "genus" => "required|string|max:50",
                 "species" => "required|string|max:50",
-                "user_id" => "required|integer",
                 "img" => "required|string",
             ],
             'plant.update' => [
                 "common_name" => "required|string|max:50",
                 "genus" => "required|string|max:50",
                 "species" => "required|string|max:50",
-                "user_id" => "required|integer",
                 "img" => "required|string",
 
             ],

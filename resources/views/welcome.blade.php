@@ -13,6 +13,8 @@
         <button type="submit">Logout</button>
       </form>
 
+      <a href="{{ route('plant.manage') }}">View my plants</a> <br>
+
       <a href="{{ route('plant.create') }}">Create</a>
   @else
   <a href="{{ route('login.index') }}">Login</a>

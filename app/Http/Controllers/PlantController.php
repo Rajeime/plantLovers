@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Plant;
 use Illuminate\Http\Request;
 use App\Http\Requests\PlantRequest;
@@ -42,7 +43,7 @@ class PlantController extends Controller
             'common_name' => $validatedRequest['common_name'],
             'genus' => $validatedRequest['genus'],
             'species' => $validatedRequest['species'],
-            'user_id' => $validatedRequest['user_id'],
+            'user_id' => auth()->id(),
             'img' => $validatedRequest['img'],
         ]);
 
@@ -57,7 +58,13 @@ class PlantController extends Controller
     public function show(Plant $plant)
     {
         //
-        return view('plants.show', compact('plant'));
+        // Retrieve the associated user model using eager loading
+         $plantWithOwner = Plant::findOrFail($plant['id']);
+
+        // Retrieve the owner's name from the user model
+        $owner = $plantWithOwner->user['name'];
+
+        return view('plants.show', compact('plant', 'owner'));
     }
 
     /**
@@ -81,7 +88,7 @@ class PlantController extends Controller
             'common_name' => $validatedRequest['common_name'],
             'genus' => $validatedRequest['genus'],
             'species' => $validatedRequest['species'],
-            'user_id' => $validatedRequest['user_id'],
+            'user_id' => auth()->id(),
             'img' => $validatedRequest['img'],
         ]
         );
@@ -97,6 +104,14 @@ class PlantController extends Controller
         $plant->delete(); 
         return redirect()->route('plant.index')->with('success','Deleted Successfully');
 
+    }
+
+    public function manage(){
+
+    $plants = auth()->user()->plant;
+
+        // $plants = auth()->user()-> ;
+       return view('plants.manage', compact('plants'));
     }
 
 }

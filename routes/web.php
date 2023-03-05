@@ -27,6 +27,7 @@ Route::prefix('plant')->group(function(){
         Route::get('/edit/{plant}', [PlantController::class , 'edit'])->name('plant.edit');
         Route::put('/update/{plant}', [PlantController::class , 'update'])->name('plant.update');
         Route::delete('/delete/{plant}', [PlantController::class , 'destroy'])->name('plant.destroy');
+        Route::get('/manage', [PlantController::class , 'manage'])->name('plant.manage');
     });
 });
 

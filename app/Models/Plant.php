@@ -19,7 +19,7 @@ class Plant extends Model
     ];
 
     function user(){
-        $this->belongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
 
     function scopeFilter($query, array $filters){
@@ -35,8 +35,6 @@ class Plant extends Model
             // return $query;
         }
         
-        // add more filters here as needed
-    
         return $query;
     }
 }
